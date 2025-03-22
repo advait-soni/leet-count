@@ -15,8 +15,7 @@
         }
     ],
     "permissions": [
-        "webRequest" , 
-        "storage"
+        "webRequest" , "tabs"
     ], 
     "host_permissions": ["*://leetcode.com/*"], 
     "background": {
