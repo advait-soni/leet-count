@@ -12,12 +12,16 @@ chrome.webRequest.onCompleted.addListener(
       console.log("LeetCode Submission Status:", data.status_msg);
       console.log("LeetCode question id", data.question_id);
 
-      if (data.question_id && data.status_msg) {
-        chrome.tabs.sendMessage(details.tabId, {
-          submissionStatus: data.status_msg,
-          questionId: data.question_id,
-        });
-      }
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        if (tabs[0] && tabs[0].id >= 0) {
+          chrome.tabs.sendMessage(tabs[0].id, {
+            submissionStatus: data.status_msg,
+            questionId: data.question_id,
+          });
+        } else {
+          console.error("No active tab found or tabId is invalid");
+        }
+      });
     } catch (error) {
       console.error("Error fetching submission status:", error);
     } finally {
