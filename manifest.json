@@ -15,8 +15,10 @@
         }
     ],
     "permissions": [
-        "webRequest"
+        "webRequest" , 
+        "storage"
     ], 
+    "host_permissions": ["*://leetcode.com/*"], 
     "background": {
         "service_worker": "scripts/background.js"
     }
