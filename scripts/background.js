@@ -13,7 +13,7 @@ chrome.webRequest.onCompleted.addListener(
       console.log("LeetCode question id", data.question_id);
 
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (tabs[0] && tabs[0].id >= 0) {
+        if (tabs[0] && tabs[0].id >= 0 && data.status_msg == 'Accepted') {
           chrome.tabs.sendMessage(tabs[0].id, {
             submissionStatus: data.status_msg,
             questionId: data.question_id,
