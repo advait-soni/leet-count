@@ -6,5 +6,12 @@
     "action": {
         "default_popup": "index.html",
         "default_icon": "icon.png"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://leetcode.com/*"],
+            "js": ["scripts/content.js"],
+            "run_at": "document_idle"
+        }
+    ]
 }
